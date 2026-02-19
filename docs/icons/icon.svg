@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <rect width="512" height="512" rx="96" fill="#0f0f1a"/>
-  <path d="M288 48L160 272h80l-48 192 176-240h-96z" fill="#00d4aa"/>
+  <text x="256" y="200" text-anchor="middle" font-family="SF Pro Display, -apple-system, Helvetica, Arial, sans-serif" font-weight="800" font-size="120" fill="#00d4aa" letter-spacing="-2">EM</text>
+  <text x="256" y="340" text-anchor="middle" font-family="SF Pro Display, -apple-system, Helvetica, Arial, sans-serif" font-weight="600" font-size="88" fill="#ffffff" letter-spacing="-1">MedKitt</text>
 </svg>
