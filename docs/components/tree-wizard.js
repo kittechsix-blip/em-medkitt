@@ -4,6 +4,7 @@ import { TreeEngine } from '../services/tree-engine.js';
 import { NEUROSYPHILIS_NODES } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 import { updateFlowchart, showFlowchart, destroyFlowchart } from './tree-flowchart.js';
+import { renderInlineCitations } from './reference-table.js';
 let engine = null;
 /** Initialize and render the wizard for a given tree */
 export function renderTreeWizard(container, treeId) {
@@ -217,12 +218,19 @@ function renderResultNode(content, node, _container) {
     if (node.treatment) {
         renderTreatment(content, node.treatment);
     }
+    // Expandable citations on result cards
     if (node.citation?.length) {
-        const cite = document.createElement('div');
-        cite.className = 'wizard-citation';
-        cite.textContent = `Evidence: ${node.citation.map(n => `[${n}]`).join(' ')}`;
-        content.appendChild(cite);
+        renderInlineCitations(content, node.citation);
     }
+    // Full reference link
+    const refLink = document.createElement('button');
+    refLink.className = 'btn-text reference-link';
+    refLink.textContent = '\uD83D\uDCCB Full Reference Tables';
+    refLink.addEventListener('click', () => {
+        destroyFlowchart();
+        router.navigate('/reference');
+    });
+    content.appendChild(refLink);
     // Answer summary
     const history = engine?.getAnswerHistory();
     if (history && history.length > 0) {

@@ -81,5 +81,5 @@ Each session:
 - [x] Task 8: Wizard UI Component
 - [x] Task 9: Result Card & Treatment Display
 - [x] Task 10: Visual Flowchart Mini-Map
-- [ ] Task 11: Reference Tables & Info Panels
+- [x] Task 11: Reference Tables & Info Panels
 - [ ] Task 12: Build, Test & Deploy

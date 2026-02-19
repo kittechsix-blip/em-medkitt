@@ -123,7 +123,7 @@
 - Verify: flowchart accurately reflects tree structure and current position
 
 ## Task 11: Reference Tables & Info Panels
-**Status:** Not Started
+**Status:** Complete
 **Files:** `src/components/reference-table.ts`
 **Description:**
 - Diagnostic test performance table (from PRD.md Section 3)

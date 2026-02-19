@@ -6,6 +6,7 @@ import type { RouteParams } from './services/router.js';
 import { renderCategoryGrid } from './components/category-grid.js';
 import { renderCategoryView } from './components/category-view.js';
 import { renderTreeWizard } from './components/tree-wizard.js';
+import { renderReferencePanel } from './components/reference-table.js';
 
 // -------------------------------------------------------------------
 // Service Worker Registration
@@ -93,6 +94,11 @@ function handleTreeNode(params: RouteParams): void {
   );
 }
 
+function handleReference(_params: RouteParams): void {
+  const main = clearMain();
+  renderReferencePanel(main);
+}
+
 function handleNotFound(): void {
   renderPlaceholder(
     'Page Not Found',
@@ -121,6 +127,7 @@ function init(): void {
   router.on('/category/:id', handleCategory);
   router.on('/tree/:id', handleTree);
   router.on('/tree/:id/node/:nodeId', handleTreeNode);
+  router.on('/reference', handleReference);
   router.onNotFound(handleNotFound);
 
   // Start routing

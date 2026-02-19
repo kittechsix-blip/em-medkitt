@@ -1,7 +1,7 @@
 // EM Decision Trees — Service Worker
 // Cache-first offline strategy
 
-const CACHE_NAME = 'em-medkitt-v3';
+const CACHE_NAME = 'em-medkitt-v4';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -19,6 +19,7 @@ const ASSETS_TO_CACHE = [
   './services/tree-engine.js',
   './components/tree-wizard.js',
   './components/tree-flowchart.js',
+  './components/reference-table.js',
   './icons/icon-192.png',
   './icons/icon-512.png'
 ];

@@ -361,3 +361,49 @@
   - Screenshot confirms dark UI, teal accents, clean layout
 
 **Next task:** Task 11 — Reference Tables & Info Panels
+
+---
+
+### Task 11: Reference Tables & Info Panels
+
+**Completed:**
+- Created `src/components/reference-table.ts` — reference tables and citation panels
+  - `DIAGNOSTIC_TESTS` array: 10 CSF test rows with sensitivity, specificity, and clinical role
+  - `CITATIONS` array: all 17 evidence citations from PRD.md Section 8
+  - `renderReferencePanel(container)` — standalone reference page with 4 sections:
+    - CSF Diagnostic Test Performance: mobile-friendly card layout (test name, sensitivity/specificity stats, clinical role)
+    - Meta-analysis ranking note (Ding et al., 2023)
+    - Key Clinical Notes: 6 clinical pearls (neuro symptoms sensitivity, CSF-VDRL interpretation, prozone, HIV cutoffs, penicillin)
+    - Evidence Citations: numbered list of all 17 references
+    - Disclaimer
+  - `renderInlineCitations(container, citationNums)` — expandable `<details>` element for result cards, shows specific citations referenced by each result node
+- Added `/reference` route to `src/app.ts` — `handleReference` renders standalone reference panel
+- Updated `src/components/tree-wizard.ts` — result cards now include:
+  - Expandable inline citations (replaces static "Evidence: [1] [2]" text)
+  - "Full Reference Tables" link navigating to `/reference`
+- Added ~140 lines of CSS to `docs/style.css`:
+  - `.reference-heading`, `.reference-section`, `.reference-section-title` — page structure
+  - `.reference-test-card`, `.reference-test-name`, `.reference-test-stats` — test performance cards
+  - `.reference-stat`, `.reference-stat-label`, `.reference-stat-value` — sensitivity/specificity display
+  - `.reference-test-role`, `.reference-note`, `.reference-note-card` — clinical notes
+  - `.reference-citation-list`, `.reference-citation-item`, `.reference-citation-num`, `.reference-citation-text` — citations
+  - `.reference-citations-inline` — expandable inline citations on result cards
+  - `.reference-disclaimer` — disclaimer styling
+  - `.reference-link` — "Full Reference Tables" button
+- Updated `docs/sw.js` — added `reference-table.js` to cache (v4)
+
+**Verified:**
+- `bun x tsc --noEmit` passes with zero errors
+- Standalone reference page at `#/reference`:
+  - All 10 diagnostic test cards render with sensitivity/specificity stats
+  - Meta-analysis ranking note displays
+  - 6 key clinical notes render as cards
+  - All 17 evidence citations display with [num] markers
+  - Disclaimer renders at bottom
+  - Back button navigates via history.back()
+- Inline citations on result cards:
+  - "Syphilis Unlikely" result shows "▸ References (2)" expandable
+  - Expanding shows [1] and [2] with full citation text in teal
+  - "Full Reference Tables" link navigates to /reference
+
+**Next task:** Task 12 — Build, Test & Deploy

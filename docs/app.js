@@ -4,6 +4,7 @@ import { router } from './services/router.js';
 import { renderCategoryGrid } from './components/category-grid.js';
 import { renderCategoryView } from './components/category-view.js';
 import { renderTreeWizard } from './components/tree-wizard.js';
+import { renderReferencePanel } from './components/reference-table.js';
 // -------------------------------------------------------------------
 // Service Worker Registration
 // -------------------------------------------------------------------
@@ -71,6 +72,10 @@ function handleTreeNode(params) {
     const nodeId = params['nodeId'] ?? 'unknown';
     renderPlaceholder(`Node: ${nodeId}`, `In tree: ${treeId}. Node rendering coming in Task 8.`, '\uD83D\uDD35');
 }
+function handleReference(_params) {
+    const main = clearMain();
+    renderReferencePanel(main);
+}
 function handleNotFound() {
     renderPlaceholder('Page Not Found', 'This route doesn\u2019t exist. Tap back or go home.', '\u2753');
     const main = getMain();
@@ -91,6 +96,7 @@ function init() {
     router.on('/category/:id', handleCategory);
     router.on('/tree/:id', handleTree);
     router.on('/tree/:id/node/:nodeId', handleTreeNode);
+    router.on('/reference', handleReference);
     router.onNotFound(handleNotFound);
     // Start routing
     router.start();
