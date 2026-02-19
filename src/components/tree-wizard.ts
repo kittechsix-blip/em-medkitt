@@ -344,7 +344,7 @@ function renderTreatment(container: HTMLElement, treatment: TreatmentRegimen): v
   const section = document.createElement('div');
   section.className = 'treatment-section';
 
-  const heading = document.createElement('h3');
+  const heading = document.createElement('h2');
   heading.className = 'treatment-heading';
   heading.textContent = 'Treatment';
   section.appendChild(heading);

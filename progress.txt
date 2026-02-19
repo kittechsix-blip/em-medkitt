@@ -407,3 +407,37 @@
   - "Full Reference Tables" link navigates to /reference
 
 **Next task:** Task 12 — Build, Test & Deploy
+
+---
+
+### Task 12: Build, Test & Deploy
+
+**Completed:**
+- Final TypeScript compilation: `bun x tsc` — zero errors across all 14 source files
+- Service worker cache audit: all 17 assets listed in ASSETS_TO_CACHE, cache bumped to v5
+- Security review:
+  - CSP: `default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'`
+  - innerHTML: only used for clearing containers (`= ''`) — no user input injection
+  - eval(): zero matches across entire codebase
+  - No external resources, no CDN dependencies
+  - No patient data stored — all session state ephemeral in localStorage
+- Accessibility audit:
+  - Fixed heading hierarchy: treatment h3 → h2 (was skipping h1 → h3 on result pages)
+  - All buttons have accessible text content
+  - All touch targets ≥ 44px
+  - No images without alt text
+  - Heading hierarchy clean on all page types
+- End-to-end browser test (Playwright):
+  - Home → 23 categories displayed, Infectious Disease shows "1 tree" badge
+  - Category → Neurosyphilis tree card with "42 nodes"
+  - Full 6-module path: Serology (info + Traditional) → Stage (Late Latent) → Symptoms (Yes) → LP Indicated → CSF-VDRL (Reactive) → Neurosyphilis Treatment
+  - Treatment result: drug card, dose highlight, PCN allergy expandable (Ceftriaxone 2g IV), monitoring, 3 inline citations, decision path (5 steps)
+  - Reference page: 10 diagnostic test cards, 6 clinical notes, 17 citations, disclaimer
+  - Flowchart overlay: module progress bar, path trace, tappable jump-back
+  - Session persistence: localStorage save/restore working
+  - Start Over and All Categories navigation working
+- GitHub Pages enabled: https://kittechsix-blip.github.io/em-medkitt/
+  - Source: main branch, /docs directory
+  - HTTPS enforced
+
+**All 12 tasks complete. Project v1.0 shipped.**
