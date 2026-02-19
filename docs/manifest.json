@@ -1,6 +1,6 @@
 {
-  "name": "EM Decision Trees",
-  "short_name": "EM Trees",
+  "name": "EM-MedKitt",
+  "short_name": "EM-MedKitt",
   "description": "Evidence-based clinical decision trees for emergency medicine",
   "display": "standalone",
   "orientation": "portrait",
