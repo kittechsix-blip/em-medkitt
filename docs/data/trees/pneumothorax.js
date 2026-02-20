@@ -145,7 +145,7 @@ export const PNEUMOTHORAX_NODES = [
         id: 'ptx-a-profile',
         type: 'info',
         module: 3,
-        title: 'A\u2019 Profile Confirmed',
+        title: 'Pneumothorax Suspected',
         body: 'Absent lung sliding + only A-lines (no B-lines) = A\u2019 profile.\n\nThis profile is highly suspicious for pneumothorax but is not pathognomonic on its own. The combined absence of lung sliding and B-lines with presence of a lung point provides the highest diagnostic accuracy (pooled sensitivity 89%, specificity 99%).\n\nProceed to search for the lung point \u2014 the only sign with 100% specificity for pneumothorax.',
         citation: [1, 2, 3],
         next: 'ptx-lung-point',
