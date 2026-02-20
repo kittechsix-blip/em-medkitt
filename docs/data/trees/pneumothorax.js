@@ -1,6 +1,6 @@
 // EM Decision Trees — Pneumothorax POCUS Consult
 // Ultrasound-guided diagnosis of pneumothorax using sequential sonographic signs.
-// 4 modules: Technique/VPPI → Lung Sliding → A' Profile → Lung Point + M-Mode
+// 4 modules: Technique/VPPI → Lung Sliding → Pneumothorax Assessment → Lung Point + M-Mode
 // 7 evidence citations.
 export const PNEUMOTHORAX_NODES = [
     // =====================================================================
@@ -11,7 +11,7 @@ export const PNEUMOTHORAX_NODES = [
         type: 'info',
         module: 1,
         title: 'Pneumothorax POCUS: VPPI & Technique',
-        body: 'THE VISCERAL-PARIETAL PLEURAL INTERFACE (VPPI)\nThe VPPI is the anatomic foundation for all ultrasound signs used to diagnose pneumothorax. In healthy lungs, the visceral and parietal pleura appear as a single echogenic line ~0.2\u20130.3 mm thick on ultrasound. When air accumulates between these layers, it disrupts their normal contact, producing the key diagnostic findings:\n\n\u2022 Absent lung sliding \u2014 air prevents visceral-parietal contact (100% sensitivity, 78% specificity)\n\u2022 Absent B-lines \u2014 comet-tail artifacts require direct pleural contact; their absence with no sliding = A\u2019 profile\n\u2022 Lung point \u2014 where collapsed lung intermittently contacts the chest wall (100% specificity, pathognomonic)\n\nA-lines seen in pneumothorax are horizontal reverberation artifacts from the parietal pleura-air interface, replacing normal lung parenchymal signals from an intact VPPI.\n\nEXAMINATION TECHNIQUE\nProbe: High-frequency linear (5\u201312 MHz), longitudinal orientation.\nPosition: Anterior chest wall, 3rd\u20134th intercostal space, mid-clavicular line. Scan laterally.\nPatient: Supine \u2014 free air rises to the most anterior (least dependent) portions of the chest.',
+        body: 'THE VISCERAL-PARIETAL PLEURAL INTERFACE (VPPI)\nThe VPPI is the anatomic foundation for all ultrasound signs used to diagnose pneumothorax. In healthy lungs, the visceral and parietal pleura appear as a single echogenic line ~0.2\u20130.3 mm thick on ultrasound. When air accumulates between these layers, it disrupts their normal contact, producing the key diagnostic findings:\n\n\u2022 Absent lung sliding \u2014 air prevents visceral-parietal contact (100% sensitivity, 78% specificity)\n\u2022 Absent B-lines \u2014 comet-tail artifacts require direct pleural contact; their absence with no sliding suggests pneumothorax\n\u2022 Lung point \u2014 where collapsed lung intermittently contacts the chest wall (100% specificity, pathognomonic)\n\nA-lines seen in pneumothorax are horizontal reverberation artifacts from the parietal pleura-air interface, replacing normal lung parenchymal signals from an intact VPPI.\n\nEXAMINATION TECHNIQUE\nProbe: High-frequency linear (5\u201312 MHz), longitudinal orientation.\nPosition: Anterior chest wall, 3rd\u20134th intercostal space, mid-clavicular line. Scan laterally.\nPatient: Supine \u2014 free air rises to the most anterior (least dependent) portions of the chest.',
         citation: [1, 2, 3, 7],
         images: [
             {
@@ -101,7 +101,7 @@ export const PNEUMOTHORAX_NODES = [
         confidence: 'definitive',
     },
     // =====================================================================
-    // MODULE 3: A' PROFILE ASSESSMENT
+    // MODULE 3: PNEUMOTHORAX ASSESSMENT
     // =====================================================================
     {
         id: 'ptx-blines-check',
@@ -124,7 +124,7 @@ export const PNEUMOTHORAX_NODES = [
                 next: 'ptx-other-causes',
             },
             {
-                label: 'No B-lines \u2014 A-lines only (A\u2019 profile)',
+                label: 'No B-lines \u2014 A-lines only (suspect pneumothorax)',
                 description: 'Only horizontal reverberation artifacts with no lung sliding',
                 next: 'ptx-a-profile',
                 urgency: 'urgent',
@@ -146,7 +146,7 @@ export const PNEUMOTHORAX_NODES = [
         type: 'info',
         module: 3,
         title: 'Pneumothorax Suspected',
-        body: 'Absent lung sliding + only A-lines (no B-lines) = A\u2019 profile.\n\nThis profile is highly suspicious for pneumothorax but is not pathognomonic on its own. The combined absence of lung sliding and B-lines with presence of a lung point provides the highest diagnostic accuracy (pooled sensitivity 89%, specificity 99%).\n\nProceed to search for the lung point \u2014 the only sign with 100% specificity for pneumothorax.',
+        body: 'Absent lung sliding + only A-lines (no B-lines) = high suspicion for pneumothorax.\n\nThis pattern is highly suspicious but is not pathognomonic on its own. The combined absence of lung sliding and B-lines with presence of a lung point provides the highest diagnostic accuracy (pooled sensitivity 89%, specificity 99%).\n\nProceed to search for the lung point \u2014 the only sign with 100% specificity for pneumothorax.',
         citation: [1, 2, 3],
         next: 'ptx-lung-point',
     },
@@ -158,7 +158,7 @@ export const PNEUMOTHORAX_NODES = [
         type: 'question',
         module: 4,
         title: 'Step 3: Search for Lung Point',
-        body: 'Scan laterally from the anterior chest wall. The lung point is where the collapsed lung margin meets the chest wall \u2014 it appears as sudden replacement of the A\u2019 profile by lung sliding or B-lines at a specific location.\n\nThe lung point has 79\u2013100% sensitivity and 100% specificity, making it the only pathognomonic sign of pneumothorax. Its location along the chest wall can also estimate pneumothorax size.\n\nWas a lung point identified?',
+        body: 'Scan laterally from the anterior chest wall. The lung point is where the collapsed lung margin meets the chest wall \u2014 it appears as sudden replacement of the pneumothorax pattern by lung sliding or B-lines at a specific location.\n\nThe lung point has 79\u2013100% sensitivity and 100% specificity, making it the only pathognomonic sign of pneumothorax. Its location along the chest wall can also estimate pneumothorax size.\n\nWas a lung point identified?',
         citation: [2, 3, 4],
         images: [
             {
@@ -170,13 +170,13 @@ export const PNEUMOTHORAX_NODES = [
         options: [
             {
                 label: 'Lung point identified',
-                description: 'Transition from A\u2019 profile to lung sliding found',
+                description: 'Transition from pneumothorax pattern to lung sliding found',
                 next: 'ptx-confirmed',
                 urgency: 'critical',
             },
             {
                 label: 'No lung point found',
-                description: 'A\u2019 profile persists across entire anterior-lateral chest',
+                description: 'Pneumothorax pattern persists across entire anterior-lateral chest',
                 next: 'ptx-mmode',
                 urgency: 'urgent',
             },
@@ -197,7 +197,7 @@ export const PNEUMOTHORAX_NODES = [
         type: 'question',
         module: 4,
         title: 'Step 4: M-Mode Confirmation',
-        body: 'No lung point was found, but A\u2019 profile is present. Use M-mode for additional confirmation.\n\nPlace the M-mode cursor at the pleural line and observe the pattern:\n\u2022 Seashore sign (normal): Granular pattern below the pleural line = lung movement\n\u2022 Barcode / stratosphere sign (abnormal): Horizontal parallel lines throughout = no lung movement\n\nThe barcode sign is suggestive but not diagnostic alone \u2014 it can occur with any cause of absent lung sliding.\n\nWhat is the M-mode pattern?',
+        body: 'No lung point was found, but pneumothorax pattern is present (absent sliding, no B-lines). Use M-mode for additional confirmation.\n\nPlace the M-mode cursor at the pleural line and observe the pattern:\n\u2022 Seashore sign (normal): Granular pattern below the pleural line = lung movement\n\u2022 Barcode / stratosphere sign (abnormal): Horizontal parallel lines throughout = no lung movement\n\nThe barcode sign is suggestive but not diagnostic alone \u2014 it can occur with any cause of absent lung sliding.\n\nWhat is the M-mode pattern?',
         citation: [4, 5, 7],
         images: [
             {
@@ -225,7 +225,7 @@ export const PNEUMOTHORAX_NODES = [
         type: 'result',
         module: 4,
         title: 'Pneumothorax Likely',
-        body: 'A\u2019 profile + barcode/stratosphere sign on M-mode is highly suggestive of pneumothorax.\n\nThe barcode sign alone is suggestive but not diagnostic \u2014 it can occur with other causes of absent lung sliding. Combined with the A\u2019 profile (no lung sliding + no B-lines + no lung point found), clinical suspicion should be high.\n\nAbsence of a lung point may indicate a large or complete pneumothorax where no transition zone is accessible.\n\nThe Society of Critical Care Medicine recommends ultrasound to complement or replace conventional CXR for pneumothorax diagnosis, particularly when rapid results are needed.',
+        body: 'Pneumothorax pattern + barcode/stratosphere sign on M-mode is highly suggestive of pneumothorax.\n\nThe barcode sign alone is suggestive but not diagnostic \u2014 it can occur with other causes of absent lung sliding. Combined with the pneumothorax pattern (no lung sliding + no B-lines + no lung point found), clinical suspicion should be high.\n\nAbsence of a lung point may indicate a large or complete pneumothorax where no transition zone is accessible.\n\nThe Society of Critical Care Medicine recommends ultrasound to complement or replace conventional CXR for pneumothorax diagnosis, particularly when rapid results are needed.',
         citation: [1, 4, 5],
         recommendation: 'High clinical suspicion for pneumothorax. Consider CT chest for confirmation if patient is hemodynamically stable. If unstable with clinical concern for tension pneumothorax, proceed with emergent intervention (needle decompression or chest tube).',
         confidence: 'recommended',
@@ -235,7 +235,7 @@ export const PNEUMOTHORAX_NODES = [
         type: 'result',
         module: 4,
         title: 'Reassess \u2014 Findings Inconsistent',
-        body: 'A\u2019 profile was identified (no lung sliding, no B-lines) but M-mode shows seashore sign, which indicates normal lung movement. These findings are inconsistent.\n\nPossible explanations:\n\u2022 Probe position shifted between B-mode and M-mode assessment\n\u2022 Intermittent or small pneumothorax\n\u2022 Subcutaneous emphysema mimicking absent lung sliding\n\u2022 Technical artifact',
+        body: 'Pneumothorax pattern was identified (no lung sliding, no B-lines) but M-mode shows seashore sign, which indicates normal lung movement. These findings are inconsistent.\n\nPossible explanations:\n\u2022 Probe position shifted between B-mode and M-mode assessment\n\u2022 Intermittent or small pneumothorax\n\u2022 Subcutaneous emphysema mimicking absent lung sliding\n\u2022 Technical artifact',
         citation: [4, 7],
         recommendation: 'Inconsistent findings. Recommend re-scanning with careful attention to probe position. If clinical suspicion persists, consider CT chest for definitive evaluation.',
         confidence: 'consider',
@@ -246,7 +246,7 @@ export const PNEUMOTHORAX_NODE_COUNT = PNEUMOTHORAX_NODES.length;
 // -------------------------------------------------------------------
 // Module Labels (for flowchart)
 // -------------------------------------------------------------------
-export const PNEUMOTHORAX_MODULE_LABELS = ['Technique', 'Sliding', 'A\u2019 Profile', 'Lung Point'];
+export const PNEUMOTHORAX_MODULE_LABELS = ['Technique', 'Sliding', 'Assessment', 'Lung Point'];
 // -------------------------------------------------------------------
 // Evidence Citations (7 references)
 // -------------------------------------------------------------------
@@ -267,7 +267,7 @@ export const PNEUMOTHORAX_DIAGNOSTIC_TESTS = [
     { test: 'Supine Chest X-ray', sensitivity: '50.2%', specificity: '99.4%', role: 'Misses ~50% of pneumothoraces. May miss anterior or small pneumothoraces.' },
     { test: 'Lung Sliding (absent)', sensitivity: '95\u2013100%', specificity: '78\u201391%', role: 'Screening sign. Absence does NOT confirm PTX alone.' },
     { test: 'Lung Point', sensitivity: '79\u2013100%', specificity: '100%', role: 'Pathognomonic. Only sign that definitively confirms pneumothorax.' },
-    { test: 'A\u2019 Profile + Lung Point', sensitivity: '89%', specificity: '99%', role: 'Combined approach provides highest diagnostic accuracy.' },
+    { test: 'Absent Sliding/B-lines + Lung Point', sensitivity: '89%', specificity: '99%', role: 'Combined approach provides highest diagnostic accuracy.' },
 ];
 export const PNEUMOTHORAX_CLINICAL_NOTES = [
     'Lung sliding is 95\u2013100% sensitive for ruling out pneumothorax at the scanning location, but only 78\u201391% specific.',
