@@ -354,7 +354,10 @@ function renderResultNode(content: HTMLElement, node: DecisionNode, _container: 
   restartBtn.addEventListener('click', () => {
     if (engine) engine.reset();
     destroyFlowchart();
-    router.navigate(`/tree/${currentTreeId}`);
+    const container = document.getElementById('app');
+    if (container && currentTreeId) {
+      renderTreeWizard(container, currentTreeId);
+    }
   });
 
   const homeBtn = document.createElement('button');

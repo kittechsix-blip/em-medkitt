@@ -294,7 +294,10 @@ function renderResultNode(content, node, _container) {
         if (engine)
             engine.reset();
         destroyFlowchart();
-        router.navigate(`/tree/${currentTreeId}`);
+        const container = document.getElementById('app');
+        if (container && currentTreeId) {
+            renderTreeWizard(container, currentTreeId);
+        }
     });
     const homeBtn = document.createElement('button');
     homeBtn.className = 'btn-text';
