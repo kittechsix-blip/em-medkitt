@@ -42,6 +42,12 @@ export function renderCategoryGrid(container: HTMLElement): void {
   grid.appendChild(addCard);
 
   container.appendChild(grid);
+
+  // Disclaimer
+  const disclaimer = document.createElement('p');
+  disclaimer.className = 'home-disclaimer';
+  disclaimer.textContent = 'This tool is for educational and clinical decision support purposes only. It does not replace clinical judgment. All treatment decisions should be verified against current guidelines and institutional protocols.';
+  container.appendChild(disclaimer);
 }
 
 /** Create a single category card element */

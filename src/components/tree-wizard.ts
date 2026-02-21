@@ -6,6 +6,7 @@ import { NEUROSYPHILIS_NODES, NEUROSYPHILIS_CITATIONS, NEUROSYPHILIS_MODULE_LABE
 import { PNEUMOTHORAX_NODES, PNEUMOTHORAX_CITATIONS, PNEUMOTHORAX_MODULE_LABELS } from '../data/trees/pneumothorax.js';
 import { PE_TREATMENT_NODES, PE_TREATMENT_CITATIONS, PE_TREATMENT_MODULE_LABELS } from '../data/trees/pe-treatment.js';
 import { ECHO_VIEWS_NODES, ECHO_VIEWS_CITATIONS, ECHO_VIEWS_MODULE_LABELS } from '../data/trees/echo-views.js';
+import { PRIAPISM_NODES, PRIAPISM_CITATIONS, PRIAPISM_MODULE_LABELS } from '../data/trees/priapism.js';
 import type { Citation } from '../data/trees/neurosyphilis.js';
 import { router } from '../services/router.js';
 
@@ -56,6 +57,13 @@ const TREE_CONFIGS: Record<string, TreeConfig> = {
     moduleLabels: ECHO_VIEWS_MODULE_LABELS,
     citations: ECHO_VIEWS_CITATIONS,
   },
+  'priapism': {
+    nodes: PRIAPISM_NODES,
+    entryNodeId: 'priapism-start',
+    categoryId: 'procedures',
+    moduleLabels: PRIAPISM_MODULE_LABELS,
+    citations: PRIAPISM_CITATIONS,
+  },
 };
 
 let engine: TreeEngine | null = null;
@@ -91,6 +99,14 @@ function renderCurrentNode(container: HTMLElement): void {
   if (!node) return;
 
   container.innerHTML = '';
+
+  // Disclaimer banner on the first node of each consult
+  if (currentConfig && node.id === currentConfig.entryNodeId) {
+    const banner = document.createElement('div');
+    banner.className = 'wizard-disclaimer';
+    banner.textContent = 'This tool is for educational and clinical decision support purposes only. It does not replace clinical judgment. All treatment decisions should be verified against current guidelines and institutional protocols.';
+    container.appendChild(banner);
+  }
 
   // Header bar: back button + progress
   const header = renderHeader(node);

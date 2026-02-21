@@ -6,7 +6,6 @@ export const DEFAULT_CATEGORIES = [
     { id: 'cardiology', name: 'Cardiology', icon: '\u2764\uFE0F', decisionTrees: [], isCustom: false },
     { id: 'critical-care', name: 'Critical Care', icon: '\uD83C\uDFE5', decisionTrees: [], isCustom: false },
     { id: 'dermatology', name: 'Dermatology', icon: '\uD83D\uDD2C', decisionTrees: [], isCustom: false },
-    { id: 'drugs', name: 'Drugs', icon: '\uD83D\uDC8A', decisionTrees: [], isCustom: false },
     { id: 'emergency-medicine', name: 'Emergency Medicine', icon: '\uD83D\uDE91', decisionTrees: [], isCustom: false },
     { id: 'endocrinology', name: 'Endocrinology', icon: '\u26A1', decisionTrees: [], isCustom: false },
     { id: 'gastroenterology', name: 'Gastroenterology', icon: '\uD83D\uDD04', decisionTrees: [], isCustom: false },
@@ -33,7 +32,23 @@ export const DEFAULT_CATEGORIES = [
     { id: 'ob-gyn', name: 'OB/GYN', icon: '\uD83D\uDC76', decisionTrees: [], isCustom: false },
     { id: 'orthopedics', name: 'Orthopedics', icon: '\uD83E\uDDB4', decisionTrees: [], isCustom: false },
     { id: 'pediatrics', name: 'Pediatrics', icon: '\uD83E\uDDD2', decisionTrees: [], isCustom: false },
-    { id: 'procedures', name: 'Procedures', icon: '\uD83D\uDD27', decisionTrees: [], isCustom: false },
+    {
+        id: 'procedures',
+        name: 'Procedures',
+        icon: '\uD83D\uDD27',
+        decisionTrees: [
+            {
+                id: 'priapism',
+                title: 'Priapism Treatment',
+                subtitle: 'Classification \u2192 Penile Block \u2192 Aspiration \u2192 Phenylephrine \u2192 Escalation',
+                categoryId: 'procedures',
+                version: '1.0',
+                nodeCount: 44,
+                entryNodeId: 'priapism-start',
+            }
+        ],
+        isCustom: false,
+    },
     {
         id: 'pulmonology',
         name: 'Pulmonology',
@@ -55,6 +70,23 @@ export const DEFAULT_CATEGORIES = [
     { id: 'rheumatology', name: 'Rheumatology', icon: '\uD83E\uDD32', decisionTrees: [], isCustom: false },
     { id: 'toxicology', name: 'Toxicology', icon: '\u2620\uFE0F', decisionTrees: [], isCustom: false },
     { id: 'trauma', name: 'Trauma', icon: '\uD83E\uDE79', decisionTrees: [], isCustom: false },
+    {
+        id: 'urology',
+        name: 'Urology',
+        icon: '\uD83E\uDE7A',
+        decisionTrees: [
+            {
+                id: 'priapism',
+                title: 'Priapism Treatment',
+                subtitle: 'Classification \u2192 Penile Block \u2192 Aspiration \u2192 Phenylephrine \u2192 Escalation',
+                categoryId: 'urology',
+                version: '1.0',
+                nodeCount: 44,
+                entryNodeId: 'priapism-start',
+            }
+        ],
+        isCustom: false,
+    },
     {
         id: 'ultrasound',
         name: 'Ultrasound',

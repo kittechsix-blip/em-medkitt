@@ -186,6 +186,36 @@ const EDOXABAN = {
         'Kahn SR, de Wit K. Pulmonary Embolism. N Engl J Med. 2022.',
     ],
 };
+const EPINEPHRINE = {
+    id: 'epinephrine',
+    name: 'Epinephrine (Intracavernosal)',
+    genericName: 'Epinephrine',
+    drugClass: 'Non-selective adrenergic agonist (alpha + beta)',
+    route: 'Intracavernosal',
+    indications: ['Ischemic priapism (alternative to phenylephrine)'],
+    dosing: [
+        {
+            indication: 'Ischemic priapism',
+            regimen: '20 mcg (2 mL of 10 mcg/mL solution) intracavernosal every 5 minutes, up to 5 doses total (100 mcg max). Mix: 1 mL epi from cardiac amp (100 mcg/mL) + 9 mL NS = 10 mcg/mL.',
+        },
+    ],
+    contraindications: [
+        'Uncontrolled hypertension',
+        'MAO inhibitor use',
+        'Do NOT give cardiac arrest doses (1 mg) to patients with a pulse',
+    ],
+    cautions: [
+        'Has alpha AND beta1/2 effects \u2014 higher cardiovascular risk than phenylephrine',
+        'Monitor BP and HR every 5 min between injections',
+        'Hold if SBP > 160 or HR > 110',
+    ],
+    monitoring: 'BP/HR every 5 min during injections. Observe 60 min post-detumescence.',
+    notes: 'Use only if phenylephrine is unavailable. Phenylephrine is preferred due to pure alpha-1 selectivity and lower cardiovascular risk. Onset: 1 min. Duration: 5\u201310 min.',
+    citations: [
+        'Bivalacqua TJ, et al. AUA/SMSNA Guideline on Priapism. J Urol. 2022;208(1):43-52.',
+        'Graham BA, et al. Emergency Pharmacotherapy for Priapism. Expert Opin Pharmacother. 2022;23(12):1371-80.',
+    ],
+};
 const ENOXAPARIN = {
     id: 'enoxaparin',
     name: 'Enoxaparin (LMWH)',
@@ -217,6 +247,34 @@ const ENOXAPARIN = {
     citations: [
         'Konstantinides SV, et al. 2019 ESC Guidelines for Acute Pulmonary Embolism. Eur Heart J. 2020.',
         'Garcia DA, et al. Parenteral Anticoagulants: ACCP Evidence-Based Clinical Practice Guidelines. Chest. 2012.',
+    ],
+};
+const LIDOCAINE = {
+    id: 'lidocaine',
+    name: 'Lidocaine 1% (Without Epinephrine)',
+    genericName: 'Lidocaine',
+    drugClass: 'Amide local anesthetic',
+    route: 'Local injection',
+    indications: ['Dorsal penile nerve block', 'Local anesthesia for minor procedures', 'Nerve blocks'],
+    dosing: [
+        {
+            indication: 'Dorsal penile nerve block',
+            regimen: '10 mL total of 1% lidocaine WITHOUT epinephrine: 5 mL injected at 10 o\u2019clock and 5 mL at 2 o\u2019clock at penile base, under Buck\u2019s fascia.',
+        },
+    ],
+    contraindications: [
+        'Allergy to amide local anesthetics',
+        'NEVER use with epinephrine on the penis \u2014 end-artery territory, risk of ischemic necrosis',
+    ],
+    cautions: [
+        'Max dose without epi: 4.5 mg/kg',
+        'Aspirate before injecting to avoid intravascular injection',
+        'Wait 5\u201310 min for full anesthetic effect',
+    ],
+    monitoring: 'Test block adequacy with pinprick before procedure. Onset: 2\u20135 min. Duration: 30\u201360 min.',
+    notes: 'For penile block, NEVER use formulations containing epinephrine. The penis is supplied by end-arteries \u2014 epinephrine can cause ischemic necrosis.',
+    citations: [
+        'Burnett AL, Sharlip ID. Standard Operating Procedures for Priapism. J Sex Med. 2013;10(1):180-94.',
     ],
 };
 const PENICILLIN_G_IV = {
@@ -270,6 +328,40 @@ const PROCAINE_PENICILLIN = {
     citations: [
         'CDC. Sexually Transmitted Infections Treatment Guidelines. 2021.',
         'Dunaway SB, et al. Procaine Penicillin G vs Aqueous Crystalline Penicillin G for Neurosyphilis. Clin Infect Dis. 2020.',
+    ],
+};
+const PHENYLEPHRINE = {
+    id: 'phenylephrine',
+    name: 'Phenylephrine (Intracavernosal)',
+    genericName: 'Phenylephrine',
+    drugClass: 'Selective alpha-1 adrenergic agonist',
+    route: 'Intracavernosal',
+    indications: ['Ischemic priapism (first-line)', 'Post-ICI prolonged erection'],
+    dosing: [
+        {
+            indication: 'Ischemic priapism',
+            regimen: '200 mcg (2 mL of 100 mcg/mL solution) intracavernosal every 5 minutes, up to 5 doses total (1 mg max). Corpora cavernosa communicate freely \u2014 inject one side only. Mix: 1 mL phenylephrine from vial (10 mg/mL) into 100 mL NS = 100 mcg/mL.',
+        },
+        {
+            indication: 'Pediatric / Sickle cell',
+            regimen: '100 mcg (1 mL of 100 mcg/mL) per injection. Lower dose recommended.',
+        },
+    ],
+    contraindications: [
+        'Uncontrolled hypertension',
+        'MAO inhibitor use',
+    ],
+    cautions: [
+        'Monitor BP and HR every 5 min between injections',
+        'Hold if SBP > 160 or HR > 110',
+        'Pure alpha-1 agonist \u2014 no intrinsic inotropy, no heart rate increase',
+    ],
+    monitoring: 'BP/HR every 5 min during injections. Observe 60 min post-detumescence.',
+    notes: 'First-line sympathomimetic for ischemic priapism (AUA/SMSNA 2022). Alpha-1 selective = lower cardiovascular risk than epinephrine. 74% success alone, 70\u2013100% combined with aspiration. Onset: 1 min. Duration: 10\u201320 min.',
+    citations: [
+        'Bivalacqua TJ, et al. AUA/SMSNA Guideline on Priapism. J Urol. 2022;208(1):43-52.',
+        'Martin C, Cocchio C. Phenylephrine vs Terbutaline for Ischemic Priapism. Am J Emerg Med. 2016;34(2):222-4.',
+        'Graham BA, et al. Emergency Pharmacotherapy for Priapism. Expert Opin Pharmacother. 2022;23(12):1371-80.',
     ],
 };
 const RIVAROXABAN = {
@@ -343,7 +435,10 @@ export const ALL_DRUGS = [
     DOXYCYCLINE,
     EDOXABAN,
     ENOXAPARIN,
+    EPINEPHRINE,
+    LIDOCAINE,
     PENICILLIN_G_IV,
+    PHENYLEPHRINE,
     PROCAINE_PENICILLIN,
     RIVAROXABAN,
     UFH,
@@ -370,7 +465,10 @@ const NAME_TO_ID = [
     [/doxycycline/i, 'doxycycline'],
     [/edoxaban/i, 'edoxaban'],
     [/enoxaparin|LMWH|low.molecular/i, 'enoxaparin'],
+    [/epinephrine|adrenaline/i, 'epinephrine'],
+    [/lidocaine/i, 'lidocaine'],
     [/aqueous.*penicillin|penicillin G.*IV|crystalline.*penicillin/i, 'penicillin-g-iv'],
+    [/phenylephrine/i, 'phenylephrine'],
     [/procaine.*penicillin/i, 'procaine-penicillin'],
     [/rivaroxaban/i, 'rivaroxaban'],
     [/unfractionated heparin|^UFH$|heparin sodium/i, 'ufh'],
