@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background rounded rect clip -->
+    <clipPath id="iconClip">
+      <rect width="512" height="512" rx="112" ry="112"/>
+    </clipPath>
+
+    <!-- Soft drop shadow -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="0" dy="2" result="offsetBlur"/>
+      <feComponentTransfer in="offsetBlur" result="shadowAlpha">
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode in="shadowAlpha"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- ECG pulse gradient -->
+    <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#00E5B9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00d4aa;stop-opacity:0.9" />
+    </linearGradient>
+
+    <!-- Icon circle glow -->
+    <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- "Med" gradient -->
+    <linearGradient id="medGrad" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#F8F8FF" />
+      <stop offset="50%" style="stop-color:#FAFAFA" />
+      <stop offset="100%" style="stop-color:#FFFFFF" />
+    </linearGradient>
+
+    <!-- "Kitt" gradient -->
+    <linearGradient id="kittGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00E5B9" />
+      <stop offset="40%" style="stop-color:#00C896" />
+      <stop offset="70%" style="stop-color:#2E8B57" />
+      <stop offset="100%" style="stop-color:#228B22" />
+    </linearGradient>
+
+    <!-- Burnt umber gradient -->
+    <linearGradient id="umberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A0522D" />
+      <stop offset="50%" style="stop-color:#8B4513" />
+      <stop offset="100%" style="stop-color:#8B4513" />
+    </linearGradient>
+
+    <!-- Umber shine -->
+    <linearGradient id="umberShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#CD853F;stop-opacity:0.5" />
+      <stop offset="50%" style="stop-color:#A0522D;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:0.4" />
+    </linearGradient>
+  </defs>
+
+  <!-- Dark background -->
+  <rect width="512" height="512" fill="#0f0f1a"/>
+
+  <!-- ==================== PULSE CIRCLE ICON ==================== -->
+  <g transform="translate(176, 60)" filter="url(#dropShadow)">
+    <!-- Dark background circle -->
+    <circle cx="80" cy="80" r="76" fill="#0f0f1a"/>
+
+    <!-- Teal circle outline -->
+    <circle cx="80" cy="80" r="72" fill="none" stroke="#00d4aa" stroke-width="5" filter="url(#iconGlow)"/>
+
+    <!-- Branching pathway base -->
+    <line x1="16" y1="80" x2="36" y2="80" stroke="#2d2d52" stroke-width="5"/>
+
+    <!-- P-wave -->
+    <polyline points="36,80 44,80 48,72 52,80"
+              fill="none" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- PR segment -->
+    <line x1="52" y1="80" x2="60" y2="80" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- QRS complex -->
+    <polyline points="60,80 64,80 68,64 76,96 80,80 88,80"
+              fill="none" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- ST segment -->
+    <line x1="88" y1="80" x2="96" y2="80" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- T-wave -->
+    <polyline points="96,80 100,72 104,80 108,80"
+              fill="none" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Branches -->
+    <line x1="120" y1="80" x2="132" y2="56" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round"/>
+    <line x1="120" y1="80" x2="132" y2="104" stroke="url(#ecgGrad)" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Decision nodes -->
+    <circle cx="36" cy="80" r="5" fill="#00E5B9"/>
+    <circle cx="108" cy="80" r="5" fill="#00E5B9"/>
+    <circle cx="120" cy="80" r="5" fill="#00E5B9"/>
+    <circle cx="132" cy="56" r="5" fill="#00E5B9"/>
+    <circle cx="132" cy="104" r="5" fill="#00E5B9"/>
+  </g>
+
+  <!-- ==================== WORDMARK ==================== -->
+  <!-- "Med" -->
+  <text x="140" y="320" font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
+        font-size="80" font-weight="700" fill="url(#medGrad)" letter-spacing="-0.02em">Med</text>
+
+  <!-- "Kitt" -->
+  <text x="310" y="320" font-family="Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif"
+        font-size="80" font-weight="800" fill="url(#kittGrad)" letter-spacing="-0.02em">Kitt</text>
+
+  <!-- ==================== BURNT UMBER ACCENT LINE ==================== -->
+  <g transform="translate(140, 336)">
+    <rect x="0" y="0" width="232" height="6" rx="3" ry="3" fill="url(#umberGrad)"/>
+    <rect x="0" y="0" width="232" height="6" rx="3" ry="3" fill="url(#umberShine)" style="mix-blend-mode: overlay;"/>
+    <rect x="1" y="0.5" width="230" height="2" rx="1" ry="1" fill="#CD853F" fill-opacity="0.5"/>
+  </g>
+
+  <!-- ==================== TAGLINE ==================== -->
+  <text x="256" y="400" text-anchor="middle"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="28" font-weight="500" fill="#8b92b9" letter-spacing="0.15em">CLINICAL CONSULT</text>
+</svg>

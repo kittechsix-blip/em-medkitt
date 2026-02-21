@@ -1,7 +1,7 @@
 // MedKitt — Service Worker
 // Cache-first offline strategy
 
-const CACHE_NAME = 'medkitt-v28';
+const CACHE_NAME = 'medkitt-v29';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -12,7 +12,7 @@ const ASSETS_TO_CACHE = [
   './style.css',
   './app.js',
   './manifest.json',
-  './icons/icon.svg',
+  './assets/app-icon.svg',
   './services/router.js',
   './components/category-grid.js',
   './components/category-view.js',
@@ -43,8 +43,8 @@ const ASSETS_TO_CACHE = [
   './images/echo-views/a4c-anatomy.png',
   './images/echo-views/subxiphoid-view.png',
   './images/echo-views/ivc-labeled.png',
-  './icons/icon-192.png',
-  './icons/icon-512.png'
+  './assets/app-icon-192.png',
+  './assets/app-icon-512.png'
 ];
 
 // Install: pre-cache all static assets
