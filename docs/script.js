@@ -87,7 +87,6 @@ const modalClose = document.getElementById('modal-close');
 const nav = document.getElementById('nav');
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
-const installBtn = document.getElementById('install-btn');
 
 // State
 let currentFilter = 'all';
@@ -295,46 +294,6 @@ function initNavigation() {
     });
 }
 
-// ============================================
-// PWA Install Prompt
-// ============================================
-
-let deferredPrompt;
-
-function initPWA() {
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        
-        // Show install button if hidden
-        if (installBtn) {
-            installBtn.style.display = 'inline-flex';
-        }
-    });
-    
-    window.addEventListener('appinstalled', () => {
-        deferredPrompt = null;
-        if (installBtn) {
-            installBtn.textContent = 'Installed';
-            installBtn.disabled = true;
-        }
-    });
-    
-    if (installBtn) {
-        installBtn.addEventListener('click', async () => {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    deferredPrompt = null;
-                }
-            } else {
-                // iOS doesn't support beforeinstallprompt — just open the app
-                window.location.href = './app.html';
-            }
-        });
-    }
-}
 
 // ============================================
 // Scroll Animations
@@ -407,7 +366,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderIdeas();
     initFAQ();
     initNavigation();
-    initPWA();
     initScrollAnimations();
 });
 

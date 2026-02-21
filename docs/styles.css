@@ -1407,6 +1407,124 @@ a {
     line-height: 1.7;
 }
 
+/* Install Guide */
+.install-guide {
+    padding: 100px 0;
+}
+
+.install-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.install-card {
+    padding: 32px 28px;
+}
+
+.install-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.install-platform-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.install-card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.install-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.install-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.install-step-num {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: rgba(0, 212, 170, 0.15);
+    color: var(--primary);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.install-step-content p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.install-step-content strong {
+    color: var(--text-primary);
+}
+
+.install-icon-hint {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(0, 212, 170, 0.08);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 212, 170, 0.15);
+}
+
+.install-icon-hint svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.install-icon-hint span {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.install-cta {
+    text-align: center;
+}
+
+.install-hint {
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    .install-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .install-card {
+        padding: 24px 20px;
+    }
+}
+
 /* Footer */
 .footer {
     padding: 80px 0 40px;
