@@ -10,7 +10,7 @@
 MedKitt is a mobile-first Progressive Web App (PWA) that provides evidence-based clinical decision trees — called **consults** — for emergency medicine physicians. The first consult is a complete **neurosyphilis workup** covering serology interpretation through treatment.
 
 **Live:** https://kittechsix-blip.github.io/em-medkitt/
-**Repo:** https://github.com/kittechsix-blip/em-medkitt
+**Repo:** https://github.com/kittechsix-blip/medkitt
 
 ## Why It Exists
 
